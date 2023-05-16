@@ -1,6 +1,8 @@
 package com.abrin.blog.controllers;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +46,7 @@ public class UserController {
 	@DeleteMapping("/{userId}")
 	public ResponseEntity<ApiResponse> deleteUser(@PathVariable("userId") Integer uid) {
 		this.userService.deleteUser(uid) ;
-		return new ResponseEntity<ApiResponse>(new ApiResponse("User deleted successfully", true), HttpStatus.OK);
+		return new ResponseEntity<ApiResponse>(new ApiResponse("User deleted successfully", true, new SimpleDateFormat("dd/MM/yyy HH:mm:ss").format(new Date())), HttpStatus.OK);
 	}
 
 	// GET -> fetch all User
